@@ -3,6 +3,7 @@
 URL de consulta: http://127.0.0.1:8000/
 
 Template: listado_familiares.html (ProyectoFinal/Templates)
+
 Vista: vista_listado_familiares (appcoder/views.py) 
 
 <!DOCTYPE html>
@@ -35,6 +36,7 @@ Vista: vista_listado_familiares (appcoder/views.py)
 </body>
 </html>
 
+
 def vista_listado_familiares(request):
     familiares = Familiares.objects.all()
     data={"familiares":familiares,}
@@ -42,7 +44,9 @@ def vista_listado_familiares(request):
     respuesta = plantilla.render(data)
     return HttpResponse(respuesta)
     
+    
 Modelo: Familiares (appcoder/models.py)
+
   
   class Familiares(models.Model):
       nombre=models.CharField(max_length=40)
