@@ -2,6 +2,15 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
 import os
+from appcoder.models import Familiares
+
+# Create your views here.
+def vista_listado_familiares(request):
+    familiares = Familiares.objects.all()
+    data={"familiares":familiares,}
+    plantilla = loader.get_template("listado_familiares.html")
+    respuesta = plantilla.render(data)
+    return HttpResponse(respuesta)
 
 def vista_saludo(request):
     return HttpResponse("""<h1>Hola coders!</h1>
@@ -21,22 +30,16 @@ def anio_nacimiento(request,edad):
     return HttpResponse(f"Naciste en  {anio_nac}")
 
 def vista_plantilla(request):
-    archivo = open(r"C:\Users\maria\OneDrive\Documents\Coder House\Python\ProyectoDjango\ProyectoFinal\ProyectoFinal\templates\plantilla_bonita.html", encoding="utf-8")
-    plantilla = Template(archivo.read())
-    archivo.close()
+    plantilla = loader.get_template("plantilla_bonita.html")
     datos = {"nombre":"Maria", "apellido":"Carbajal","fecha":datetime.now()}
-    contexto = Context(datos)
-    documento = plantilla.render(contexto)
+    documento = plantilla.render(datos)
     return HttpResponse(documento)
 
 def vista_listado_alumnos(request):
-    archivo = open(r"C:\Users\maria\OneDrive\Documents\Coder House\Python\ProyectoDjango\ProyectoFinal\ProyectoFinal\templates\listado.html", encoding="utf-8")
-    plantilla = Template(archivo.read())
-    archivo.close()
+    plantilla = loader.get_template("listado.html")
     listado_alumnos = ["Juan Lopez", "Nadia Cepeda","Ari Borovoy"]
     datos = {"tecnologia":"React", "listado_alumnos":listado_alumnos}
-    contexto = Context(datos)
-    documento = plantilla.render(contexto)
+    documento = plantilla.render(datos)
     return HttpResponse(documento)
 
 def vista_listado_alumnos2(request):
