@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoFinal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\maria\OneDrive\Documents\Coder House\Python\ProyectoDjango\ProyectoFinal\ProyectoFinal\templates", encoding:="utf-8"],
+        'DIRS': [r"\ProyectoDjango\ProyectoFinal\ProyectoFinal\templates", encoding:="utf-8"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
